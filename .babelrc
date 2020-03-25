@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": "maintained node versions",
+      "useBuiltIns": "usage",
+      "corejs": 3
+    }],
+    "@babel/typescript"
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
+    "@babel/proposal-nullish-coalescing-operator",
+    "@babel/proposal-optional-chaining"
+  ]
+}
