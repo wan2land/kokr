@@ -1,0 +1,9 @@
+{
+  "test": ".*.ts$",
+  "exclude": ".test.ts$",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    }
+  }
+}

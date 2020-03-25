@@ -1,7 +1,7 @@
 {
   "name": "@ko_kr/text",
-  "version": "0.6.0",
-  "description": "Super slim depdency injection container with Async/Promise for Javascript(& Typescript).",
+  "version": "0.1.0",
+  "description": "Library to find josa using template literal",
   "keywords": [
     "한국어",
     "한글",
@@ -20,9 +20,9 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rimraf ./lib && tsc && babel ./src --out-dir ./lib --extensions \".ts\" --ignore \"src/**/*.test.ts\""
+    "build": "rimraf ./lib && swc src -d lib --config-file ../../.swcrc && tsc"
   },
   "dependencies": {
-    "core-js": "^3.2.1"
+    "jongseong": "^0.4.2"
   }
 }
