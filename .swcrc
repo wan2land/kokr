@@ -1,6 +1,12 @@
 {
   "test": ".*.ts$",
   "exclude": ".test.ts$",
+  "env": {
+    "targets": "> 0.25%, not dead, maintained node versions"
+  },
+  "module": {
+    "type": "commonjs"
+  },
   "jsc": {
     "parser": {
       "syntax": "typescript"
