@@ -19,7 +19,5 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "rimraf ./lib && swc src -d lib --config-file ../../.swcrc && tsc"
-  },
-  "dependencies": {
   }
 }
