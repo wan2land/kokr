@@ -1,6 +1,6 @@
 {
   "name": "@ko_kr/id",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Korean id number(jumin) library",
   "keywords": [
     "주민등록번호",
