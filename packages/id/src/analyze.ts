@@ -23,6 +23,7 @@ function sanitizeDate(year: number, month: number, date: number): string | undef
   if (d.getFullYear() === year && d.getMonth() === month - 1 && d.getDate() === date) {
     return `${year}-${`${month}`.padStart(2, '0')}-${`${date}`.padStart(2, '0')}`
   }
+  return undefined
 }
 
 function findParity(n: number[], isForeign?: boolean): number | undefined {
