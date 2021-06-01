@@ -4,6 +4,7 @@
   "author": "Changwan Jun <wan2land@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prepublish": "npm run build",
     "build": "lerna run build",
     "test": "npm run build && npm run test:lint && npm run test:unit",
     "test:lint": "eslint 'packages/*/src/**/*.ts'",

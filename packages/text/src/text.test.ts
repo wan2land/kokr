@@ -59,12 +59,14 @@ describe('testsuite of text', () => {
     expect(text`${'완삼'}였어요.`).toEqual('완삼이었어요.')
   })
 
-  it('test text 이에요/예요', () => {
-    expect(text`${'완두'}이에요.`).toEqual('완두예요.')
-    expect(text`${'완두'}예요.`).toEqual('완두예요.')
+  it('test text 이에요/에요/예요', () => {
+    expect(text`${'완두'}이에요.`).toEqual('완두에요.')
+    expect(text`${'완두'}에요.`).toEqual('완두에요.')
+    expect(text`${'완두'}예요.`).toEqual('완두에요.')
 
     expect(text`${'완삼'}이에요.`).toEqual('완삼이에요.')
-    expect(text`${'완삼'}예요.`).toEqual('완삼이에요.')
+    expect(text`${'완삼'}에요.`).toEqual('완삼이에요.')
+    expect(text`${'완삼'}예요.`).toEqual('완삼예요.')
   })
 
   it('test text 으로/로', () => {
