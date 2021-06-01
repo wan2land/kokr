@@ -3,8 +3,8 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'graphity',
-    'graphity/typescript',
+    'stable',
+    'stable/typescript',
   ],
   ignorePatterns: [
     'node_modules/',
