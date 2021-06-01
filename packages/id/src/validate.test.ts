@@ -10,7 +10,6 @@ describe('testsuite of id', () => {
     expect(validate('010100-1010104')).toBeFalsy() // wrong day
     expect(validate('010132-1010104')).toBeFalsy() // wrong day
 
-
     expect(validate('0101011010104')).toBeTruthy()
     expect(validate('0101012010107')).toBeTruthy()
     expect(validate('0101013010100')).toBeTruthy()

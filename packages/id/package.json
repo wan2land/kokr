@@ -18,6 +18,6 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rimraf ./lib && swc src -d lib --config-file ../../.swcrc && tsc"
+    "build": "rimraf ./lib && swc src -d lib --config-file ../../build.swcrc && tsc"
   }
 }
