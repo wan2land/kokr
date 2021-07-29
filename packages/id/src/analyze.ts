@@ -16,7 +16,7 @@ function sanitizeDate(year: number, month: number, date: number): string | undef
   if (year < 1800 || year > 2099 || month < 1 || month > 12 || date < 1 || date > 31) {
     return
   }
-  const d = new Date()
+  const d = new Date(0) // 오늘이 30일인데, 2월 넣으면 3월 1일 되면서 에러남.
   d.setFullYear(year)
   d.setMonth(month - 1)
   d.setDate(date)
