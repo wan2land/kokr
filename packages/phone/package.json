@@ -1,0 +1,21 @@
+{
+  "name": "@ko_kr/phone",
+  "version": "0.2.1",
+  "description": "Korean phone number library",
+  "keywords": [
+    "phone",
+    "formatter",
+    "typescript"
+  ],
+  "author": "Changwan Jun <wan2land@gmail.com>",
+  "license": "MIT",
+  "repository": "https://github.com/wan2land/ko_kr/tree/master/packages/phone",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "rimraf ./lib && swc src -d lib --config-file ../../build.swcrc && tsc"
+  }
+}
