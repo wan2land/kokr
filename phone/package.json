@@ -1,5 +1,5 @@
 {
-  "name": "@ko_kr/phone",
+  "name": "@kokr/phone",
   "version": "0.2.1",
   "description": "Korean phone number library",
   "keywords": [
@@ -9,7 +9,7 @@
   ],
   "author": "Changwan Jun <wan2land@gmail.com>",
   "license": "MIT",
-  "repository": "https://github.com/wan2land/ko_kr/tree/master/packages/phone",
+  "repository": "https://github.com/wan2land/kokr/tree/master/packages/phone",
   "publishConfig": {
     "access": "public"
   },
