@@ -1,10 +1,1 @@
-/node_modules
-
-.vscode
-.idea
-
-npm-debug.log*
-yarn-error.log
-
-/packages/*/node_modules
-/packages/*/lib
+.npm

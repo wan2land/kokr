@@ -1,16 +1,16 @@
-# ko_KR - id
+# koKR - id
 
 ## 설치방법
 
 ```bash
-npm install @ko_kr/id
+npm install @kokr/id
 ```
 
 ```typescript
-import { analyze, validate } from '@ko_kr/id'
+import { analyze, validate } from "@kokr/id";
 
 // 주민번호 분석
-analyze('000101-1000002')
+analyze("000101-1000002");
 /*
 {
   valid: true, // 올바른 주민번호 여부
@@ -24,15 +24,14 @@ analyze('000101-1000002')
 */
 
 // 주민번호 분석 (now에는 기준 날짜. age, krAge 계산할 때 기준)
-analyze('000101-1000002', { now: '2021-06-01' })
-
+analyze("000101-1000002", { now: "2021-06-01" });
 
 // 일반 주민등록번호 (외국인 등록번호 미포함)
-validate('010101 - 0010101')
+validate("010101 - 0010101");
 
 // 외국인 등록번호 포함
-validate('010101-5010105', { enableForeigner: true })
-validate('010101-6010108', { enableForeigner: true })
-validate('010101-7010101', { enableForeigner: true })
-validate('010101-8010103', { enableForeigner: true })
+validate("010101-5010105", { enableForeigner: true });
+validate("010101-6010108", { enableForeigner: true });
+validate("010101-7010101", { enableForeigner: true });
+validate("010101-8010103", { enableForeigner: true });
 ```
