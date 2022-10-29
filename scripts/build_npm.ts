@@ -27,6 +27,19 @@ const services = [
       "typescript",
     ],
   },
+  {
+    name: "text",
+    description: "Korean text library / 한국어 문장과 관련한 라이브러리",
+    keywords: [
+      "한국어",
+      "한글",
+      "조사",
+      "은는이가",
+      "korean",
+      "hangul",
+      "typescript",
+    ],
+  },
 ];
 
 await Promise.all(services.map(({ name, description, keywords }) =>
