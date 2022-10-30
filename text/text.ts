@@ -26,7 +26,7 @@ const map: [search: string, allowed: number[], candidates: [string, string]][] =
 
 export function text(
   strings: TemplateStringsArray,
-  ...interpolation: any[]
+  ...interpolation: unknown[]
 ): string {
   return strings.reduce((carry: string, string: string, index: number) => {
     const word = String(interpolation[index - 1]);
