@@ -8,6 +8,18 @@ await emptyDir("./.npm");
 
 const services = [
   {
+    name: "date",
+    description: "Korean date library / 한국의 날짜와 관련한 라이브러리",
+    keywords: [
+      "business day",
+      "anniversary",
+      "holiday",
+      "기념일",
+      "공휴일",
+      "typescript",
+    ],
+  },
+  {
     name: "id",
     description: "Korean id number(jumin) library / 주민등록번호와 관련한 라이브러리",
     keywords: [
@@ -61,6 +73,13 @@ await Promise.all(services.map(({ name, description, keywords }) =>
             name: "RequestInit",
             typeOnly: true, // only used in type declarations
           }],
+        },
+        {
+          package: {
+            name: "@denostack/shim-webstore",
+            version: "~0.1.0",
+          },
+          globalNames: ["localStorage"],
         },
       ],
     },
