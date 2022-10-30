@@ -38,3 +38,7 @@ const dates = await getHolidays(2022);
 ]
 */
 ```
+
+## Document
+
+[See Full Document](https://deno.land/x/kokr/date/mod.ts)

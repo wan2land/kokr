@@ -1,6 +1,12 @@
 import { cache } from "./cache.ts";
-import { getHolidaysFromHttp } from "./holiday.ts";
+import { DateInfo as _DateInfo, getHolidaysFromHttp } from "./holiday.ts";
 
+/**
+ * 서버에서 공휴일 관련 정보를 가져옵니다. / Get Holidays from Http Server
+ * @type {(year: number) => Promise<_DateInfo[]>}
+ * @param {number} year
+ * @return {Promise<_DateInfo[]>}
+ */
 export const getHolidays = cache(getHolidaysFromHttp);
 
 function format(date: Date) {
@@ -28,16 +34,20 @@ async function _isHoliday(d: Date): Promise<boolean> {
   return !!found?.holiday;
 }
 
-/** return is holiday */
+/**
+ * 공휴일인지 아닌지 판단 / return is holiday
+ * @param {string} date YYYY-MM-DD
+ * @return {Promise<boolean>}
+ */
 export function isHoliday(date: string): Promise<boolean> {
   return _isHoliday(new Date(date));
 }
 
 /**
- * 영업일 기준 n일 후 반환
- * @param date YYYY-MM-DD
- * @param daysAfter n일
- * @returns YYYY-MM-DD
+ * 영업일 기준 n일 후 반환 / After n business days
+ * @param {string} date YYYY-MM-DD 형식
+ * @param {number} daysAfter n일, 양수 음수 모두 사용 가능
+ * @returns {string} YYYY-MM-DD
  */
 export async function getNextBusinessDay(
   date: string,

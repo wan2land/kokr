@@ -60,12 +60,19 @@ export interface AnalyzeOptions {
 }
 
 export interface AnalyzeResult {
+  /** 주어진 주민등록번호가 올바른지 */
   valid: boolean;
+  /** 주민등록번호의 패리티 값, 잘못된 주민등록번호의 반환 */
   parity: number | null;
+  /** 성별, M은 남성, F는 여성 */
   gender: "M" | "F" | null;
+  /** 외국인 여부 */
   foreigner: boolean | null;
+  /** 생년월일 */
   birth: string | null;
+  /** 만나이 */
   age: number | null;
+  /** 한국나이 */
   krAge: number | null;
 }
 
