@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "dnt/": "https://deno.land/x/dnt@0.34.0/",
+    "testing/": "https://deno.land/std@0.183.0/testing/"
+  },
+  "tasks": {
+    "build:npm": "deno run -A .tasks/build_npm.ts"
+  }
+}
