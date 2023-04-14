@@ -4,6 +4,11 @@
     "testing/": "https://deno.land/std@0.183.0/testing/"
   },
   "tasks": {
+    "test": "deno task test:unit && deno task test:lint && deno task test:format && deno task test:types",
+    "test:unit": "deno test -A --unstable",
+    "test:lint": "deno lint",
+    "test:format": "deno fmt --check",
+    "test:types": "find . -name '*.ts' | xargs deno check --unstable",
     "build:npm": "deno run -A .tasks/build_npm.ts"
   }
 }

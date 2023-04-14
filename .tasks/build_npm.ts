@@ -21,7 +21,8 @@ const services = [
   },
   {
     name: "id",
-    description: "Korean id number(jumin) library / 주민등록번호와 관련한 라이브러리",
+    description:
+      "Korean id number(jumin) library / 주민등록번호와 관련한 라이브러리",
     keywords: [
       "주민등록번호",
       "주민번호",

@@ -1,7 +1,7 @@
 # koKR - date
 
-@koKR date는 [distbe/holidays](https://github.com/distbe/holidays)의 공휴일정보를 사용합니다.
-Deno의 localStorage를 활용 하루단위로 캐싱처리합니다.
+@koKR date는 [distbe/holidays](https://github.com/distbe/holidays)의
+공휴일정보를 사용합니다. Deno의 localStorage를 활용 하루단위로 캐싱처리합니다.
 
 ## 사용법
 
