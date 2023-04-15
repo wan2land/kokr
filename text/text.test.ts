@@ -96,3 +96,45 @@ Deno.test("@kokr/text, text 으로/로", () => {
   assertEquals(text`${"서울"}으로 갑시다.`, "서울로 갑시다.");
   assertEquals(text`${"서울"}로 갑시다.`, "서울로 갑시다.");
 });
+
+Deno.test("@kokr/text, text 이시여/시여", () => {
+  assertEquals(text`${"완두"}이시여!`, "완두시여!");
+  assertEquals(text`${"완두"}시여!`, "완두시여!");
+
+  assertEquals(text`${"완삼"}이시여!`, "완삼이시여!");
+  assertEquals(text`${"완삼"}시여!`, "완삼이시여!");
+});
+
+Deno.test("@kokr/text, text digit", () => {
+  assertEquals(text`정답은 ${"100"}과 같다.`, "정답은 100과 같다.");
+  assertEquals(text`정답은 ${"100"}와 같다.`, "정답은 100과 같다.");
+
+  assertEquals(text`정답은 ${"72"}과 같다.`, "정답은 72와 같다.");
+  assertEquals(text`정답은 ${"72"}와 같다.`, "정답은 72와 같다.");
+});
+
+Deno.test("@kokr/text, text english words", () => {
+  assertEquals(text`${"Apple"}는 코딩 합니다.`, "Apple은 코딩 합니다.");
+  assertEquals(text`${"Apple"}은 코딩 합니다.`, "Apple은 코딩 합니다.");
+
+  assertEquals(text`${"Banana"}는 코딩 합니다.`, "Banana는 코딩 합니다.");
+  assertEquals(text`${"Banana"}은 코딩 합니다.`, "Banana는 코딩 합니다.");
+});
+
+Deno.test("@kokr/text, dedent", () => {
+  function printResult(winner: string, loser: string) {
+    return text`
+      결과는 다음과 같습니다.
+
+      - 승: ${winner}
+      - 패: ${loser}
+
+      ${winner}님 축하드립니다!
+    `;
+  }
+
+  assertEquals(
+    printResult("완두", "완삼"),
+    "결과는 다음과 같습니다.\n\n- 승: 완두\n- 패: 완삼\n\n완두님 축하드립니다!",
+  );
+});

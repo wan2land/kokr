@@ -3,6 +3,7 @@ import { jongseong } from "./jongseong.ts";
 const allowWithoutJongseong = new Set([0]);
 const allowWithLieul = new Set([0, 8]);
 const patterns: [allowed: Set<number>, valid: string, invalid: string][] = [
+  [allowWithoutJongseong, "이시여", "시여"],
   [allowWithoutJongseong, "이어요", "여요"],
   [allowWithoutJongseong, "이에요", "예요"],
   [allowWithLieul, "으로", "로"],
