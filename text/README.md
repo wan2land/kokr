@@ -165,5 +165,9 @@ console.log(text`${name}{'는'} 가나다라..`); // 이렇게 되면 '는'은 �
 
 ## 함께 보면 좋아요
 
+- [Hangul.js](https://github.com/e-/Hangul.js) 한글 문장의 자/모음을 분리하는
+  라이브러리
+- [inko](https://github.com/738/inko) 영타를 한글로, 혹은 한타를 영어로
+  변환해주는 라이브러리
 - [josa-complete](https://github.com/rycont/josa-complete) String.prototype을
   확장해서 조사를 깔끔하게 붙여주는 라이브러리
