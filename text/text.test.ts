@@ -29,12 +29,12 @@ Deno.test("@kokr/text, text 을/를", () => {
   assertEquals(text`${"완삼"}를 가르쳤습니다.`, "완삼을 가르쳤습니다.");
 });
 
-Deno.test("@kokr/text, text 와/과", () => {
-  assertEquals(text`${"완두"}와 코딩을 했습니다.`, "완두와 코딩을 했습니다.");
+Deno.test("@kokr/text, text 과/와", () => {
   assertEquals(text`${"완두"}과 코딩을 했습니다.`, "완두와 코딩을 했습니다.");
+  assertEquals(text`${"완두"}와 코딩을 했습니다.`, "완두와 코딩을 했습니다.");
 
-  assertEquals(text`${"완삼"}와 코딩을 했습니다.`, "완삼과 코딩을 했습니다.");
   assertEquals(text`${"완삼"}과 코딩을 했습니다.`, "완삼과 코딩을 했습니다.");
+  assertEquals(text`${"완삼"}와 코딩을 했습니다.`, "완삼과 코딩을 했습니다.");
 });
 
 Deno.test("@kokr/text, text 아/야", () => {
@@ -42,7 +42,49 @@ Deno.test("@kokr/text, text 아/야", () => {
   assertEquals(text`${"완두"}야!`, "완두야!");
 
   assertEquals(text`${"완삼"}아!`, "완삼아!");
-  assertEquals(text`${"완삼"}야!`, "완삼아!");
+  // assertEquals(text`${"완삼"}야!`, "완삼아!"); -> 이야/야 규칙이 우선
+});
+
+// 2글자 가나다순
+
+Deno.test("@kokr/text, text 이나/나", () => {
+  assertEquals(text`${"완두"}이나..`, "완두나..");
+  assertEquals(text`${"완두"}나..`, "완두나..");
+
+  assertEquals(text`${"완삼"}이나..`, "완삼이나..");
+  assertEquals(text`${"완삼"}나..`, "완삼이나..");
+});
+
+Deno.test("@kokr/text, text 이다/다", () => {
+  assertEquals(text`${"완두"}이다!!`, "완두다!!");
+  assertEquals(text`${"완두"}다!!`, "완두다!!");
+
+  assertEquals(text`${"완삼"}이다!!`, "완삼이다!!");
+  assertEquals(text`${"완삼"}다!!`, "완삼이다!!");
+});
+
+Deno.test("@kokr/text, text 이든/든", () => {
+  assertEquals(text`${"완두"}이든..`, "완두든..");
+  assertEquals(text`${"완두"}든..`, "완두든..");
+
+  assertEquals(text`${"완삼"}이든..`, "완삼이든..");
+  assertEquals(text`${"완삼"}든..`, "완삼이든..");
+});
+
+Deno.test("@kokr/text, text 이라/라", () => {
+  assertEquals(text`${"완두"}이라니!!`, "완두라니!!");
+  assertEquals(text`${"완두"}라니!!`, "완두라니!!");
+
+  assertEquals(text`${"완삼"}이라니!!`, "완삼이라니!!");
+  assertEquals(text`${"완삼"}라니!!`, "완삼이라니!!");
+});
+
+Deno.test("@kokr/text, text 이란/란", () => {
+  assertEquals(text`${"완두"}이란..`, "완두란..");
+  assertEquals(text`${"완두"}란..`, "완두란..");
+
+  assertEquals(text`${"완삼"}이란..`, "완삼이란..");
+  assertEquals(text`${"완삼"}란..`, "완삼이란..");
 });
 
 Deno.test("@kokr/text, text 이랑/랑", () => {
@@ -51,6 +93,62 @@ Deno.test("@kokr/text, text 이랑/랑", () => {
 
   assertEquals(text`${"완삼"}이랑!`, "완삼이랑!");
   assertEquals(text`${"완삼"}랑!`, "완삼이랑!");
+});
+
+Deno.test("@kokr/text, text 으로/로", () => {
+  assertEquals(text`${"대구"}으로 갑시다.`, "대구로 갑시다.");
+  assertEquals(text`${"대구"}로 갑시다.`, "대구로 갑시다.");
+
+  assertEquals(text`${"부산"}으로 갑시다.`, "부산으로 갑시다.");
+  assertEquals(text`${"부산"}로 갑시다.`, "부산으로 갑시다.");
+
+  // ㄹ 탈락
+  assertEquals(text`${"서울"}으로 갑시다.`, "서울로 갑시다.");
+  assertEquals(text`${"서울"}로 갑시다.`, "서울로 갑시다.");
+});
+
+Deno.test("@kokr/text, text 이며/며", () => {
+  assertEquals(text`${"완두"}이며,`, "완두며,");
+  assertEquals(text`${"완두"}며,`, "완두며,");
+
+  assertEquals(text`${"완삼"}이며,`, "완삼이며,");
+  assertEquals(text`${"완삼"}며,`, "완삼이며,");
+});
+
+Deno.test("@kokr/text, text 이셨/셨", () => {
+  assertEquals(text`${"완두"}이셨어!`, "완두셨어!");
+  assertEquals(text`${"완두"}셨어!`, "완두셨어!");
+
+  assertEquals(text`${"완삼"}이셨어!`, "완삼이셨어!");
+  assertEquals(text`${"완삼"}셨어!`, "완삼이셨어!");
+
+  assertEquals(text`${"완두"}이셨구나!`, "완두셨구나!");
+  assertEquals(text`${"완두"}셨구나!`, "완두셨구나!");
+
+  assertEquals(text`${"완삼"}이셨구나!`, "완삼이셨구나!");
+  assertEquals(text`${"완삼"}셨구나!`, "완삼이셨구나!");
+});
+
+Deno.test("@kokr/text, text 이시/시", () => {
+  assertEquals(text`${"완두"}이시여!`, "완두시여!");
+  assertEquals(text`${"완두"}시여!`, "완두시여!");
+
+  assertEquals(text`${"완삼"}이시여!`, "완삼이시여!");
+  assertEquals(text`${"완삼"}시여!`, "완삼이시여!");
+
+  assertEquals(text`${"완두"}이시구나!`, "완두시구나!");
+  assertEquals(text`${"완두"}시구나!`, "완두시구나!");
+
+  assertEquals(text`${"완삼"}이시구나!`, "완삼이시구나!");
+  assertEquals(text`${"완삼"}시구나!`, "완삼이시구나!");
+});
+
+Deno.test("@kokr/text, text 이야/야", () => {
+  assertEquals(text`역시, ${"완두"}이야!`, "역시, 완두야!");
+  assertEquals(text`역시, ${"완두"}야!`, "역시, 완두야!");
+
+  assertEquals(text`역시, ${"완삼"}이야!`, "역시, 완삼이야!");
+  assertEquals(text`역시, ${"완삼"}야!`, "역시, 완삼이야!");
 });
 
 Deno.test("@kokr/text, text 이여/여", () => {
@@ -69,6 +167,7 @@ Deno.test("@kokr/text, text 이었/였", () => {
   assertEquals(text`${"완삼"}였어요.`, "완삼이었어요.");
 });
 
+// 3글자
 Deno.test("@kokr/text, text 이어요/여요", () => {
   assertEquals(text`${"완두"}이어요.`, "완두여요.");
   assertEquals(text`${"완두"}여요.`, "완두여요.");
@@ -83,26 +182,6 @@ Deno.test("@kokr/text, text 이에요/예요", () => {
 
   assertEquals(text`${"완삼"}이에요.`, "완삼이에요.");
   assertEquals(text`${"완삼"}예요.`, "완삼이에요.");
-});
-
-Deno.test("@kokr/text, text 으로/로", () => {
-  assertEquals(text`${"대구"}으로 갑시다.`, "대구로 갑시다.");
-  assertEquals(text`${"대구"}로 갑시다.`, "대구로 갑시다.");
-
-  assertEquals(text`${"부산"}으로 갑시다.`, "부산으로 갑시다.");
-  assertEquals(text`${"부산"}로 갑시다.`, "부산으로 갑시다.");
-
-  // ㄹ 탈락
-  assertEquals(text`${"서울"}으로 갑시다.`, "서울로 갑시다.");
-  assertEquals(text`${"서울"}로 갑시다.`, "서울로 갑시다.");
-});
-
-Deno.test("@kokr/text, text 이시여/시여", () => {
-  assertEquals(text`${"완두"}이시여!`, "완두시여!");
-  assertEquals(text`${"완두"}시여!`, "완두시여!");
-
-  assertEquals(text`${"완삼"}이시여!`, "완삼이시여!");
-  assertEquals(text`${"완삼"}시여!`, "완삼이시여!");
 });
 
 Deno.test("@kokr/text, text digit", () => {

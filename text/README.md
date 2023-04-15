@@ -20,12 +20,12 @@ npm install @kokr/text
 만약, Deno를 사용한다면 아래와 같이 import 할 수 있습니다.
 
 ```typescript
-import {} from "https://deno.land/x/kokr/text/mod.ts";
+import text from "https://deno.land/x/kokr/text/mod.ts";
 ```
 
 ## 사용법
 
-**조사**
+### 조사
 
 은/는/이/가와 같은 조사를 자동으로 붙여주는 기능을 템플릿 리터럴(Template
 Literal)을 통해 제공합니다.
@@ -74,16 +74,43 @@ console.log(text`${place}로 갑시다.`); // 서울로 갑시다.
 - 이/가
 - 을/를
 - 과/와
-- 아/야
+- 아/야 (모호한 케이스, 하단 설명 참고)
+- 이나/나
+- 이다/다
+- 이든/든
+- 이라/라
+- 이란/란
 - 이랑/랑
+- 으로/로
+- 이며/며
+- 이셨/셨
+- 이시/시
+- 이야/야 (모호한 케이스, 하단 설명 참고)
 - 이여/여
 - 이었/였
-- 으로/로
-- 이시여/시여
 - 이어요/여요
 - 이에요/예요
 
-**숫자 판단 및 영어**
+**모호한 케이스**
+
+"아/야"와 "이야/야"는 모호한 케이스가 있습니다. "야"로 끝나는 경우에는 "이야/야"
+규칙이 우선적으로 적용됩니다. 명확하게 사용하려면 "이야", "아"를 사용해야
+합니다.
+
+```typescript
+// 명확한 케이스
+console.log(text`${"완두"}아!`); // "완두야!"
+console.log(text`${"완삼"}아!`); // "완삼아!"
+
+console.log(text`${"완두"}이야!`); // "완두야!"
+console.log(text`${"완삼"}이야!`); // "완삼이야!"
+
+// 모호한 케이스
+console.log(text`${"완두"}야!`); // "완두야!"
+console.log(text`${"완삼"}야!`); // "완삼이야!" // "완삼아!"를 원했지만 "이야/야" 규칙이 우선.
+```
+
+### 숫자 판단 및 영어
 
 숫자의 경우 한국어 발음 기준으로 변환하여 제공합니다.
 
@@ -105,7 +132,7 @@ console.log(text`${"Banana"}는 코딩 합니다.`); // Banana는 코딩 합니�
 console.log(text`${"Banana"}은 코딩 합니다.`); // Banana는 코딩 합니다.
 ```
 
-**Dedent**
+### Dedent
 
 여러 줄의 문자열을 입력할 때, 들여쓰기를 제거해주는 기능을 제공합니다.
 
@@ -125,3 +152,8 @@ function printResult(winner: string, loser: string) {
 ## API
 
 [API 문서 보기](https://deno.land/x/kokr/text/mod.ts)
+
+## 함께 보면 좋아요
+
+- [josa-complete](https://github.com/rycont/josa-complete) String.prototype을
+  확장해서 조사를 깔끔하게 붙여주는 라이브러리

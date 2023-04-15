@@ -3,13 +3,26 @@ import { jongseong } from "./jongseong.ts";
 const allowWithoutJongseong = new Set([0]);
 const allowWithLieul = new Set([0, 8]);
 const patterns: [allowed: Set<number>, valid: string, invalid: string][] = [
-  [allowWithoutJongseong, "이시여", "시여"],
+  // 3
   [allowWithoutJongseong, "이어요", "여요"],
   [allowWithoutJongseong, "이에요", "예요"],
-  [allowWithLieul, "으로", "로"],
-  [allowWithoutJongseong, "이었", "였"],
-  [allowWithoutJongseong, "이여", "여"],
+
+  // 2
+  [allowWithoutJongseong, "이나", "나"],
+  [allowWithoutJongseong, "이다", "다"],
+  [allowWithoutJongseong, "이든", "든"],
+  [allowWithoutJongseong, "이라", "라"],
+  [allowWithoutJongseong, "이란", "란"],
   [allowWithoutJongseong, "이랑", "랑"],
+  [allowWithLieul, "으로", "로"],
+  [allowWithoutJongseong, "이며", "며"],
+  [allowWithoutJongseong, "이셨", "셨"],
+  [allowWithoutJongseong, "이시", "시"],
+  [allowWithoutJongseong, "이야", "야"],
+  [allowWithoutJongseong, "이여", "여"],
+  [allowWithoutJongseong, "이었", "였"],
+
+  // 1
   [allowWithoutJongseong, "은", "는"],
   [allowWithoutJongseong, "이", "가"],
   [allowWithoutJongseong, "을", "를"],
