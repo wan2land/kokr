@@ -1,28 +1,25 @@
-import { jongseong } from "./_jongseong.ts";
+import { jongseong } from "./jongseong.ts";
 
-const map: [search: string, allowed: number[], candidates: [string, string]][] =
-  [
-    ["이에요", [0], ["이에요", "에요"]],
-    ["예요", [0], ["예요", "에요"]],
-    ["에요", [0], ["이에요", "에요"]],
+const allowWithoutJongseong = new Set([0]);
+const allowWithLieul = new Set([0, 8]);
+const patterns: [allowed: Set<number>, valid: string, invalid: string][] = [
+  [allowWithoutJongseong, "이어요", "여요"],
+  [allowWithoutJongseong, "이에요", "예요"],
+  [allowWithLieul, "으로", "로"],
+  [allowWithoutJongseong, "이었", "였"],
+  [allowWithoutJongseong, "이여", "여"],
+  [allowWithoutJongseong, "이랑", "랑"],
+  [allowWithoutJongseong, "은", "는"],
+  [allowWithoutJongseong, "이", "가"],
+  [allowWithoutJongseong, "을", "를"],
+  [allowWithoutJongseong, "과", "와"],
+  [allowWithoutJongseong, "아", "야"],
+];
 
-    ["이었", [0], ["이었", "였"]],
-    ["으로", [0, 8], ["으로", "로"]],
-    ["이어", [0], ["이어", "여"]],
-    ["였", [0], ["이었", "였"]],
-    ["로", [0, 8], ["으로", "로"]],
-    ["여", [0], ["이어", "여"]],
-    ["은", [0], ["은", "는"]],
-    ["는", [0], ["은", "는"]],
-    ["이", [0], ["이", "가"]],
-    ["가", [0], ["이", "가"]],
-    ["을", [0], ["을", "를"]],
-    ["를", [0], ["을", "를"]],
-    ["과", [0], ["과", "와"]],
-    ["와", [0], ["과", "와"]],
-    ["아", [0], ["아", "야"]],
-    ["야", [0], ["아", "야"]],
-  ];
+const detectPattern = patterns.map(([_, valid, invalid]) => {
+  return `(${valid}|${invalid})`;
+}).join("|");
+const RE_DETECT = new RegExp(`^(?:${detectPattern})`);
 
 /**
  * @example
@@ -77,15 +74,44 @@ export function text(
   strings: TemplateStringsArray,
   ...interpolation: unknown[]
 ): string {
-  return strings.reduce((carry: string, string: string, index: number) => {
-    const word = String(interpolation[index - 1]);
-    const result = map.find(([start]) => string.startsWith(start));
-    if (result) {
-      const [match, allowed, candidates] = result;
-      return `${carry}${word}${
-        allowed.includes(jongseong(word)) ? candidates[1] : candidates[0]
-      }${string.slice(match.length)}`;
+  return dedent(strings.reduce(
+    (acc: string, string: string, index: number) => {
+      string = string.normalize(); // normalize NFC
+      const word = String(interpolation[index - 1]).normalize(); // normalize NFC
+
+      const matched = string.match(RE_DETECT);
+      if (matched) {
+        const [allowed, valid, invalid] =
+          patterns[[...matched].slice(1).findIndex((v) => v)];
+
+        const josa = allowed.has(jongseong(word)) ? invalid : valid;
+        const remain = string.slice(matched[0].length);
+        return `${acc}${word}${josa}${remain}`;
+      }
+      return `${acc}${word}${string}`;
+    },
+  ));
+}
+
+/** @internal */
+function dedent(text: string) {
+  const lines = text.split("\n");
+  let min: number | undefined;
+  for (const line of lines) {
+    const m = line.match(/^(\s+)\S+/);
+    if (m) {
+      const indent = m[1].length;
+      if (!min) {
+        min = indent;
+      } else {
+        min = Math.min(min, indent);
+      }
     }
-    return `${carry}${word}${string}`;
-  });
+  }
+
+  if (typeof min === "number") {
+    return lines.map((l) => l[0] === " " ? l.slice(min) : l).join("\n").trim();
+  }
+
+  return text.trim();
 }

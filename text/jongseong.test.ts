@@ -1,7 +1,9 @@
 import { assertEquals } from "testing/asserts.ts";
-import { jongseong } from "./_jongseong.ts";
+import { jongseong } from "./jongseong.ts";
 
 Deno.test("@kokr/text, jongseong hangul", () => {
+  assertEquals(jongseong("가(각)"), 0); // ignore paren
+
   assertEquals(jongseong("가"), 0);
   assertEquals(jongseong("납"), 17);
   assertEquals(jongseong("닿"), 27);
@@ -35,22 +37,24 @@ Deno.test("@kokr/text, jongseong number with zeros", () => {
 });
 
 Deno.test("@kokr/text, jongseong english word", () => {
-  assertEquals(jongseong("ck"), 1);
-  assertEquals(jongseong("on"), 4);
-  assertEquals(jongseong("ne"), 4);
-  assertEquals(jongseong("al"), 8);
-  assertEquals(jongseong("le"), 8);
-  assertEquals(jongseong("om"), 16);
-  assertEquals(jongseong("up"), 17);
-  assertEquals(jongseong("et"), 19);
-  assertEquals(jongseong("ng"), 21);
-  assertEquals(jongseong("ob"), 17);
+  assertEquals(jongseong("job"), jongseong("잡"));
+  assertEquals(jongseong("public"), jongseong("퍼블릭"));
+  assertEquals(jongseong("good"), jongseong("굿"));
+  assertEquals(jongseong("check"), jongseong("첵"));
+  assertEquals(jongseong("signal"), jongseong("시그널"));
+  assertEquals(jongseong("bottom"), jongseong("바텀"));
+  assertEquals(jongseong("vision"), jongseong("비전"));
+  assertEquals(jongseong("group"), jongseong("그룹"));
+  assertEquals(jongseong("yet"), jongseong("옛"));
+
+  assertEquals(jongseong("fine"), jongseong("파인"));
+  assertEquals(jongseong("scale"), jongseong("스케일"));
+  assertEquals(jongseong("song"), jongseong("송"));
 
   assertEquals(jongseong("coffee"), jongseong("커피"));
-  assertEquals(jongseong("top"), jongseong("탑"));
 });
 
-Deno.test("@kokr/text, jongseong english single", () => {
+Deno.test("@kokr/text, jongseong english character", () => {
   assertEquals(jongseong("l"), jongseong("엘"));
   assertEquals(jongseong("r"), jongseong("알"));
   assertEquals(jongseong("m"), jongseong("엠"));
