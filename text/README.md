@@ -149,6 +149,16 @@ function printResult(winner: string, loser: string) {
 }
 ```
 
+### 조사 변환 없이 그대로 사용하기
+
+조사 변환없이 그대로 사용하려면 다음과 같이 사용하면 됩니다.
+
+```typescript
+console.log(text`${name}는 가나다라..`); // 이렇게 되면 '는'은 '은/는'으로 변환됩니다.
+
+console.log(text`${name}{'는'} 가나다라..`); // 이렇게 되면 '는'은 변환 없이 그대로 출력됩니다.
+```
+
 ## API
 
 [API 문서 보기](https://deno.land/x/kokr/text/mod.ts)
