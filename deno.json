@@ -9,7 +9,7 @@
     "test:lint": "deno lint",
     "test:format": "deno fmt --check",
     "test:types": "find . -name '*.ts' | xargs deno check --unstable",
-    "build:npm": "deno run -A .tasks/build_npm.ts"
+    "build:npm": "deno run -A scripts/build_npm.ts"
   },
   "lint": {
     "files": {
