@@ -1,9 +1,13 @@
-export function format(phone?: string | null): string {
+export function format(phone?: string | null): string | null {
   if (!phone) {
-    return "";
+    return null;
   }
   phone = phone.replace(/[^0-9*#]/g, "");
   const len = phone.length;
+
+  if (len === 0) {
+    return null;
+  }
 
   // 15xx ~ 19xx
   if (/^(15|16|17|18|19)/.exec(phone)) {

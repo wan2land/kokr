@@ -2,6 +2,9 @@ import { assertEquals } from "testing/asserts.ts";
 import { format } from "./format.ts";
 
 Deno.test("@kokr/phone, format", () => {
+  // empty
+  assertEquals(format(""), null);
+
   const prefix = [
     "02", // seoul
     "0505", // LG+
