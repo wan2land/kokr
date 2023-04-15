@@ -59,6 +59,7 @@ export interface AnalyzeOptions {
   now?: Date | number | string;
 }
 
+/** 주민(외국인)등록번호를 분석한 결과 */
 export interface AnalyzeResult {
   /** 주어진 주민등록번호가 올바른지 */
   valid: boolean;

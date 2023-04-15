@@ -63,6 +63,10 @@ analyze("000101-1000002", { now: "2021-06-01" });
 
 **주민등록번호 및 외국인등록번호 검증**
 
+주민등록번호 및 외국인등록번호의 유효성을 검증합니다. 검증결과는 `boolean`으로
+반환됩니다. 외국인등록번호를 제외한 주민등록번호만 검증하고 싶다면
+`disableForeigner` 옵션을 사용할 수 있습니다.
+
 ```typescript
 import { validate } from "@kokr/id";
 
@@ -78,6 +82,33 @@ validate("010101-5010105", { disableForeigner: true }); // false
 validate("010101-6010108", { disableForeigner: true }); // false
 validate("010101-7010101", { disableForeigner: true }); // false
 validate("010101-8010103", { disableForeigner: true }); // false
+```
+
+**주민등록번호 및 외국인등록번호 포매팅**
+
+주민등록번호 및 외국인등록번호를 포매팅합니다. 포매팅된 결과는 `string`으로
+반환됩니다. 숫자를 제외한 모든 문자는 제거되며, 하이픈('-')이 포함됩니다.
+
+```typescript
+import { format } from "@kokr/id";
+
+format("0101010010101"); // 010101-0010101
+```
+
+기본적으로 잘못된 주민등록번호는 포매팅 처리하지 않습니다. 잘못된 경우 null을
+반환합니다.
+
+```typescript
+format("01234"); // null
+```
+
+자릿수가 다르거나, 잘못된 주민등록번호를 포매팅하고 싶다면 `ignoreInvalid`
+옵션을 사용할 수 있습니다.
+
+```typescript
+format("010101", { ignoreInvalid: true }); // 010101
+format("0101010", { ignoreInvalid: true }); // 010101-0
+format("01010100101019", { ignoreInvalid: true }); // 010101-00101019
 ```
 
 ## 데이터 구조
