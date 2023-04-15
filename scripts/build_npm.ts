@@ -98,10 +98,10 @@ await Promise.all(services.map(({ name, description, keywords }) =>
       license: "MIT",
       repository: {
         type: "git",
-        url: "git+https://github.com/denostack/kokr.git",
+        url: "git+https://github.com/wan2land/kokr.git",
       },
       bugs: {
-        url: "https://github.com/denostack/kokr/issues",
+        url: "https://github.com/wan2land/kokr/issues",
       },
     },
   }).then(() => Deno.copyFile(`${name}/README.md`, `.npm/${name}/README.md`))
