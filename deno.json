@@ -10,5 +10,15 @@
     "test:format": "deno fmt --check",
     "test:types": "find . -name '*.ts' | xargs deno check --unstable",
     "build:npm": "deno run -A .tasks/build_npm.ts"
+  },
+  "lint": {
+    "files": {
+      "exclude": [".npm/"]
+    }
+  },
+  "fmt": {
+    "files": {
+      "exclude": [".npm/"]
+    }
   }
 }
