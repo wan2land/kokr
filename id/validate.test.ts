@@ -31,26 +31,25 @@ Deno.test("@kokr/id, validate korean", () => {
 });
 
 Deno.test("@kokr/id, validate foreigner", () => {
-  // korean parity
   assertEquals(validate("010101-5010105"), false);
   assertEquals(validate("010101-6010108"), false);
   assertEquals(validate("010101-7010101"), false);
   assertEquals(validate("010101-8010103"), false);
 
-  assertEquals(validate("010101-5010107"), false);
-  assertEquals(validate("010101-6010100"), false);
-  assertEquals(validate("010101-7010103"), false);
-  assertEquals(validate("010101-8010105"), false);
+  assertEquals(validate("010101-5010107"), true);
+  assertEquals(validate("010101-6010100"), true);
+  assertEquals(validate("010101-7010103"), true);
+  assertEquals(validate("010101-8010105"), true);
 
-  assertEquals(validate("010101-5010105", { enableForeigner: true }), false);
-  assertEquals(validate("010101-6010108", { enableForeigner: true }), false);
-  assertEquals(validate("010101-7010101", { enableForeigner: true }), false);
-  assertEquals(validate("010101-8010103", { enableForeigner: true }), false);
+  assertEquals(validate("010101-8010105"), true);
 
-  assertEquals(validate("010101-5010107", { enableForeigner: true }), true);
-  assertEquals(validate("010101-6010100", { enableForeigner: true }), true);
-  assertEquals(validate("010101-7010103", { enableForeigner: true }), true);
-  assertEquals(validate("010101-8010105", { enableForeigner: true }), true);
+  assertEquals(validate("010101-5010105", { disableForeigner: true }), false);
+  assertEquals(validate("010101-6010108", { disableForeigner: true }), false);
+  assertEquals(validate("010101-7010101", { disableForeigner: true }), false);
+  assertEquals(validate("010101-8010103", { disableForeigner: true }), false);
 
-  assertEquals(validate("010101-8010105", { enableForeigner: true }), true);
+  assertEquals(validate("010101-5010107", { disableForeigner: true }), false);
+  assertEquals(validate("010101-6010100", { disableForeigner: true }), false);
+  assertEquals(validate("010101-7010103", { disableForeigner: true }), false);
+  assertEquals(validate("010101-8010105", { disableForeigner: true }), false);
 });
