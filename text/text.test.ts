@@ -200,6 +200,17 @@ Deno.test("@kokr/text, text english words", () => {
   assertEquals(text`${"Banana"}은 코딩 합니다.`, "Banana는 코딩 합니다.");
 });
 
+Deno.test("@kokr/text, text with paren", () => {
+  assertEquals(
+    text`${"코코넛(바나나)"}은 코딩 합니다.`,
+    "코코넛(바나나)은 코딩 합니다.",
+  );
+  assertEquals(
+    text`${"코코넛(바나나)"}는 코딩 합니다.`,
+    "코코넛(바나나)은 코딩 합니다.",
+  );
+});
+
 Deno.test("@kokr/text, dedent", () => {
   function printResult(winner: string, loser: string) {
     return text`
