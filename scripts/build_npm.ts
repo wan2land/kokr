@@ -1,8 +1,9 @@
 import { build, emptyDir } from "dnt/mod.ts";
 
-const cmd = Deno.run({ cmd: ["git", "describe", "--tags"], stdout: "piped" });
-const version = new TextDecoder().decode(await cmd.output()).trim();
-cmd.close();
+const denoInfo = JSON.parse(
+  Deno.readTextFileSync(new URL("../deno.json", import.meta.url)),
+);
+const version = denoInfo.version;
 
 await emptyDir("./.npm");
 

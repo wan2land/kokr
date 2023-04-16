@@ -4,8 +4,7 @@
   <a href="https://github.com/wan2land/kokr/actions"><img alt="Build" src="https://img.shields.io/github/actions/workflow/status/wan2land/kokr/ci.yml?branch=main&logo=github&style=flat-square" /></a>
   <a href="https://codecov.io/gh/wan2land/kokr"><img alt="Coverage" src="https://img.shields.io/codecov/c/gh/wan2land/kokr?style=flat-square" /></a>
   <img alt="Language Typescript" src="https://img.shields.io/badge/language-Typescript-007acc.svg?style=flat-square" />
-  <br />
-  <a href="https://deno.land/x/kokr"><img alt="deno.land/x/kokr" src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/wan2land/kokr/tags&query=$[0].name&display_name=tag&label=deno.land/x/kokr@&style=flat-square&logo=deno&labelColor=000&color=777" /></a>
+  <a href="https://deno.land/x/kokr"><img alt="deno.land/x/kokr" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/wan2land/kokr/main/deno.json&query=$.version&display_name=tag&label=deno.land/x/kokr@&style=flat-square&logo=deno&labelColor=000&color=777" /></a>
 </p>
 
 koKR은 한국어(ko) 및 한국(KR) 관련 유틸리티 모음으로, 타입스크립트를 기반으로

@@ -6,7 +6,7 @@
   <img alt="License" src="https://img.shields.io/npm/l/@kokr/id.svg?style=flat-square" />
   <img alt="Language Typescript" src="https://img.shields.io/badge/language-Typescript-007acc.svg?style=flat-square" />
   <br />
-  <a href="https://deno.land/x/kokr/id"><img alt="deno.land/x/kokr/id" src="https://img.shields.io/badge/dynamic/json?url=https://api.github.com/repos/wan2land/kokr/tags&query=$[0].name&display_name=tag&label=deno.land/x/kokr@&style=flat-square&logo=deno&labelColor=000&color=777&suffix=/id" /></a>
+  <a href="https://deno.land/x/kokr/id"><img alt="deno.land/x/kokr/id" src="https://img.shields.io/badge/dynamic/json?url=https://raw.githubusercontent.com/wan2land/kokr/main/deno.json&query=$.version&display_name=tag&label=deno.land/x/kokr@&style=flat-square&logo=deno&labelColor=000&color=777&suffix=/id" /></a>
   <a href="https://www.npmjs.com/package/@kokr/id"><img alt="Version" src="https://img.shields.io/npm/v/@kokr/id.svg?style=flat-square&logo=npm" /></a>
   <a href="https://npmcharts.com/compare/@kokr/id?minimal=true"><img alt="Downloads" src="https://img.shields.io/npm/dt/@kokr/id.svg?style=flat-square" /></a>
 </p>
